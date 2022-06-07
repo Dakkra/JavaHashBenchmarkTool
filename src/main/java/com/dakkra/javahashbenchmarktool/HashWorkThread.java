@@ -2,11 +2,11 @@ package com.dakkra.javahashbenchmarktool;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.List;
 
 public class HashWorkThread extends Thread {
 
-	private CopyOnWriteArrayList<Integer> scoreList;
+	private List<Integer> scoreList;
 
 	private String data;
 
@@ -14,7 +14,7 @@ public class HashWorkThread extends Thread {
 
 	private boolean shouldRun;
 
-	public HashWorkThread( CopyOnWriteArrayList<Integer> scoreList, String data ) {
+	public HashWorkThread( List<Integer> scoreList, String data ) {
 		this.scoreList = scoreList;
 		this.data = data;
 		counter = 0;

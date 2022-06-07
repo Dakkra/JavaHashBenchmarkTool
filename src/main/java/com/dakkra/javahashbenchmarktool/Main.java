@@ -1,12 +1,13 @@
 package com.dakkra.javahashbenchmarktool;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 import java.util.Random;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 public class Main {
 
-	public static CopyOnWriteArrayList<Integer> scores;
+	public static List<Integer> scores;
 
 	public static void main( String[] args ) {
 		System.out.println( "Dakkra's Java SHA3 CPU Benchmark Tool" );
@@ -18,7 +19,7 @@ public class Main {
 		}
 		System.out.println( "Discovered " + coreCount + " CPU threads" );
 
-		scores = new CopyOnWriteArrayList<>();
+		scores = Collections.synchronizedList( new ArrayList<>() );
 
 		int size = 2048;
 		String data = generateRandomData( size );

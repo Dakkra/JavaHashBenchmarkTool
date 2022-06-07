@@ -1,8 +1,8 @@
 package com.dakkra.javahashbenchmarktool;
 
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
-import java.util.concurrent.CopyOnWriteArrayList;
 
 /**
  * Object that times a threads ability to SHA3 data
@@ -15,7 +15,7 @@ public class HashWork {
 
 	private HashWorkThread workThread;
 
-	public HashWork( CopyOnWriteArrayList<Integer> scoreList, String data ) {
+	public HashWork( List<Integer> scoreList, String data ) {
 		workThread = new HashWorkThread( scoreList, data );
 		timer = new Timer();
 	}
