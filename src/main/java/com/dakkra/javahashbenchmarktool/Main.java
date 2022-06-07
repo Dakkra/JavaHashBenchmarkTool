@@ -45,7 +45,7 @@ public class Main {
 		}
 
 		long sum = 0;
-		synchronized( scores ){
+		synchronized( scores ) {
 			for( Integer score : scores ) {
 				sum += score;
 			}
