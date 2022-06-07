@@ -43,9 +43,12 @@ public class Main {
 		for( HashWork worker : workers ) {
 			worker.joinThread();
 		}
+
 		long sum = 0;
-		for( Integer score : scores ) {
-			sum += score;
+		synchronized( scores ){
+			for( Integer score : scores ) {
+				sum += score;
+			}
 		}
 		double avg = (double)sum / coreCount;
 		System.out.println( "Number of scores: " + scores.size() );
