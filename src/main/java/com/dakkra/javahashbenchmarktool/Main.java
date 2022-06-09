@@ -1,5 +1,7 @@
 package com.dakkra.javahashbenchmarktool;
 
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -73,6 +75,6 @@ public class Main {
 		byte[] data = new byte[ size ];
 		r.nextBytes( data );
 
-		return new String( data );
+		return new String( data, StandardCharsets.US_ASCII );
 	}
 }
