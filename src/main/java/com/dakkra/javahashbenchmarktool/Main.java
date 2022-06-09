@@ -23,7 +23,7 @@ public class Main {
 
 		scores = Collections.synchronizedList( new ArrayList<>() );
 
-		int size = 2048;
+		int size = (int)Math.pow( 2, 20 );
 		String data = generateRandomData( size );
 		System.out.println( "Generated random data of size " + size );
 
@@ -31,7 +31,8 @@ public class Main {
 		HashWork single = new HashWork( scores, data );
 		single.startWork();
 		single.joinThread();
-		System.out.println( "Single thread score is: " + scores.get( 0 ) );
+		int singleCoreScore = scores.get( 0 );
+		System.out.println( "Single thread score is: " + singleCoreScore );
 
 		scores.clear();
 		System.out.println( "Now doing multi-thread test..." );
@@ -53,9 +54,11 @@ public class Main {
 			}
 		}
 		double avg = (double)sum / coreCount;
-		System.out.println( "Number of scores: " + scores.size() );
+		System.out.println( "Number of scores: " + scores.size() + " (should match CPU thread count)" );
 		System.out.println( "Total score is: " + sum );
+		System.out.println( "Improvement over single core: " + (sum / singleCoreScore) );
 		System.out.println( "With avg per core: " + avg );
+		System.out.println( "Multi-thread efficiency : " + (avg / (double)singleCoreScore) );
 	}
 
 	/**
@@ -77,4 +80,5 @@ public class Main {
 
 		return new String( data, StandardCharsets.US_ASCII );
 	}
+
 }
