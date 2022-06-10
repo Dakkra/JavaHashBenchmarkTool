@@ -9,7 +9,7 @@ import java.util.TimerTask;
  */
 public class HashWork {
 
-	private final long TIME_MS = 1000 * 30;
+	private final long TIME_MS = 1000 * 5;
 
 	private Timer timer;
 
