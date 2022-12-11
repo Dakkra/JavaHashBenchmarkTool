@@ -1,6 +1,5 @@
 package com.dakkra.javahashbenchmarktool;
 
-import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
 import java.util.*;
 
@@ -55,7 +54,7 @@ public class Main {
 		System.out.println( "Number of scores: " + scores.size() + " (should match CPU thread count)" );
 		System.out.println( "Total score is: " + sum );
 		System.out.println( "Improvement over single core: " + (sum / singleCoreScore) );
-		System.out.println( "With avg per core: " + avg );
+		System.out.println( "With avg per thread: " + avg );
 		System.out.println( "Multi-thread efficiency : " + (avg / (double)singleCoreScore) );
 	}
 
