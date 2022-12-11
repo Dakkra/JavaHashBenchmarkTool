@@ -10,12 +10,8 @@ public class Main {
 	public static void main( String[] args ) {
 		System.out.println( "Dakkra's Java SHA3 CPU Benchmark Tool" );
 
-		int coreCount = Runtime.getRuntime().availableProcessors();
-		if( coreCount <= 0 ) {
-			System.err.println( "Could not discover system thread count" );
-			return;
-		}
-		System.out.println( "Discovered " + coreCount + " CPU threads" );
+		int threadCount = Runtime.getRuntime().availableProcessors();
+		System.out.println( "Discovered " + threadCount + " CPU threads" );
 
 		scores = new Vector<>();
 
@@ -33,8 +29,8 @@ public class Main {
 
 		scores.clear();
 		System.out.println( "Now doing multi-thread test..." );
-		ArrayList<HashWork> workers = new ArrayList<>( coreCount );
-		for( int i = 0; i < coreCount; i++ ) {
+		ArrayList<HashWork> workers = new ArrayList<>( threadCount );
+		for( int i = 0; i < threadCount; i++ ) {
 			workers.add( new HashWork( scores, data ) );
 		}
 		for( HashWork worker : workers ) {
@@ -50,7 +46,7 @@ public class Main {
 				sum += score;
 			}
 		}
-		double avg = (double)sum / coreCount;
+		double avg = (double)sum / threadCount;
 		System.out.println( "Number of scores: " + scores.size() + " (should match CPU thread count)" );
 		System.out.println( "Total score is: " + sum );
 		System.out.println( "Improvement over single core: " + (sum / singleCoreScore) );
